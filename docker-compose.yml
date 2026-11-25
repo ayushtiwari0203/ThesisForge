@@ -1,0 +1,17 @@
+services:
+  thesisforge-backend:
+    build: .
+    container_name: thesisforge-ai-app
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - LLM_PROVIDER=mock
+      - DATABASE_URL=sqlite:///./storage/thesisforge.db
+      - RISK_VETO_THRESHOLD=0.65
+    volumes:
+      - ./web-app/storage:/app/web-app/storage
+      - ./logs:/app/logs
+    restart: unless-stopped

@@ -1,0 +1,32 @@
+================================================================================
+BHARTI AIRTEL LIMITED
+UNAUDITED CONSOLIDATED FINANCIAL RESULTS FOR THE SECOND QUARTER ENDED SEPTEMBER 30, 2024
+CIN: L74899HR1995PLC095967
+Regd. Office: Airtel Center, Plot No. 16, Udyog Vihar, Phase-IV, Gurugram 122015, Haryana
+Corporate Office: Bharti Crescent, 1, Nelson Mandela Road, Vasant Kunj, Phase II, New Delhi 110070
+Filed with National Stock Exchange of India (NSE: BHARTIARTL) and BSE (532454)
+================================================================================
+
+1. FINANCIAL OVERVIEW & KEY REVENUE METRICS
+- Consolidated Revenue from Operations reached INR 41,473 crore, up 12.0% YoY compared to INR 37,044 crore in Q2 FY24, driven by the tariff revision implemented in July 2024.
+- Consolidated EBITDA was INR 22,021 crore for Q2 FY25, compared to INR 19,665 crore in Q2 FY24 (EBITDA margin of 53.1%).
+- Profit After Tax (PAT) before exceptional items stood at INR 3,911 crore; Consolidated Net Income after exceptional items was INR 3,593 crore (up 168% YoY).
+- India Business revenue grew by 16.9% YoY to INR 31,561 crore. India Mobile Services revenue grew by 18.5% YoY to INR 23,480 crore.
+
+2. OPERATIONAL KPIS & ARPU TRAJECTORY
+- India Mobile Average Revenue Per User (ARPU) increased to INR 233 per month in Q2 FY25 from INR 203 in Q2 FY24 and INR 211 in Q1 FY25, following the headline 15-20% tariff hike.
+- 4G/5G data customer base in India expanded by 26.2 million YoY to 264.4 million, representing 75.3% of overall mobile customer base.
+- Average mobile data consumption per customer stood at 23.9 GB/month (up 10.3% YoY).
+- Homes Business (Broadband & FTTH) revenue grew by 17.3% YoY with net customer additions of 583,000, reaching 8.5 million active fiber households.
+- Airtel Business (B2B Enterprise) revenue grew by 10.7% YoY to INR 5,680 crore.
+
+3. AFRICA BUSINESS PERFORMANCE
+- Airtel Africa revenue in constant currency grew by 19.9% YoY, although reported USD revenue reflected currency devaluation headwinds in Nigeria.
+- Total customer base in Africa reached 156.6 million with data customers reaching 66.0 million.
+
+4. BALANCE SHEET, LEVERAGE & CAPEX
+- Consolidated Net Debt (excluding lease obligations) stood at INR 1,48,220 crore as on September 30, 2024.
+- Net Debt-to-EBITDA (annualized) ratio improved to 2.53x compared to 2.94x in the corresponding prior year period.
+- Operating Free Cash Flow (EBITDA minus Capex) for the quarter rose by 42.9% YoY to INR 15,280 crore as 5G network rollout capex entered a moderation phase.
+- Statutory Auditors (M/s Deloitte Haskins & Sells LLP) issued an unmodified limited review report.
+- Shareholding: Promoters (Bharti Enterprises & Singtel): 53.12%, FII / FPI: 24.38%, DII: 19.42%, Public: 3.08%.

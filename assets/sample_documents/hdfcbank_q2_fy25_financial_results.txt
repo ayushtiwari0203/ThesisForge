@@ -1,0 +1,38 @@
+================================================================================
+HDFC BANK LIMITED
+STATUTORY FINANCIAL RESULTS FOR THE QUARTER AND HALF YEAR ENDED SEPTEMBER 30, 2024
+CIN: L65920MH1994PLC080618
+Regd. Office: HDFC Bank House, Senapati Bapat Marg, Lower Parel, Mumbai 400013
+Filed with National Stock Exchange of India (NSE: HDFCBANK) and BSE (500180)
+================================================================================
+
+1. FINANCIAL HIGHLIGHTS & OPERATING PERFORMANCE (CONSOLIDATED & STANDALONE)
+- Net Profit (PAT) for Q2 FY25 stood at INR 16,820.97 crore, representing a 5.3% growth compared to INR 15,976.11 crore in Q2 FY24.
+- Total Net Revenue (Net Interest Income plus Other Income) grew to INR 30,110.15 crore for the quarter.
+- Net Interest Income (NII) for the quarter ended September 30, 2024 increased by 10.0% to INR 30,010 crore from INR 27,270 crore in the previous year quarter.
+- Core Net Interest Margin (NIM) on total assets was reported at 3.46% for Q2 FY25, stabilizing post-merger of HDFC Limited into HDFC Bank.
+- Other Income (non-interest revenue) stood at INR 11,480 crore, comprising fees & commissions of INR 8,110 crore, FX & derivatives revenue of INR 1,420 crore, and net trading gains of INR 1,950 crore.
+
+2. ASSET QUALITY & PROVISIONING (BALANCE SHEET HEALTH)
+- Gross Non-Performing Assets (GNPA) stood at INR 34,250 crore, representing 1.36% of gross advances as on September 30, 2024, compared to 1.39% in the preceding quarter.
+- Net Non-Performing Assets (NNPA) ratio improved to 0.41% of net advances (INR 10,120 crore) compared to 0.44% in Q1 FY25.
+- Provision Coverage Ratio (PCR) including specific and floating provisions stood at 74.3%. Total provisions for the quarter were INR 2,700 crore compared to INR 2,904 crore in Q2 FY24.
+- The bank holds floating provisions of INR 15,200 crore and contingent provisions of INR 14,500 crore as an additional prudential buffer.
+
+3. DEPOSIT FRANCHISE & ADVANCES GROWTH (LIQUIDITY & SOLVENCY)
+- Total Deposits reached INR 25,00,094 crore as of September 30, 2024, an increase of 15.1% YoY over INR 21,72,858 crore as of September 30, 2023.
+- Current Account and Savings Account (CASA) deposits stood at INR 8,83,000 crore, with CASA ratio at 35.3%. Retail deposits accounted for approximately 84% of total deposits.
+- Gross Advances grew by 7.0% YoY to INR 25,19,000 crore, reflecting conscious post-merger portfolio balancing to optimize the Credit-to-Deposit (LDR) ratio.
+- Domestic retail loans grew by 11.3%, commercial and rural banking loans grew by 17.4%, while corporate advances grew by 1.2%.
+
+4. CAPITAL ADEQUACY & STATUTORY RATIOS
+- Total Capital Adequacy Ratio (CAR) under Basel III guidelines stood at 19.80% as of September 30, 2024 (statutory regulatory minimum requirement: 11.70%).
+- Tier-I Capital Adequacy Ratio was robust at 17.80%, providing substantial growth headroom and stress tolerance.
+- Average Liquidity Coverage Ratio (LCR) for the quarter was 128%, well above the regulatory threshold of 100%.
+
+5. SHAREHOLDING PATTERN & CORPORATE GOVERNANCE
+- Foreign Institutional Investors (FII / FPI) shareholding: 50.14%.
+- Domestic Institutional Investors (Mutual Funds & Insurance): 32.86%.
+- Resident Individuals and Public: 17.00%.
+- Promoter Holding: 0.00% (Post-merger widely held public financial institution).
+- Statutory Auditors (M/s B S R & Co. LLP and M/s Walker Chandiok & Co LLP) have issued an unmodified (clean) limited review report without qualifications.

@@ -1,0 +1,63 @@
+graph TD
+    subgraph UI_API ["User Interface & API Layer"]
+        User["User / Investor"]
+        WebUI["Web Interface (HTML5 / JS / CSS)"]
+        FastAPI["FastAPI REST Backend (/api/v1)"]
+        User --> WebUI
+        WebUI --> FastAPI
+    end
+
+    subgraph Orchestration_Layer ["Deterministic Python Orchestrator"]
+        Orchestrator["InvestmentCommitteeOrchestrator (State Machine: 9 Stages)"]
+        FastAPI --> Orchestrator
+    end
+
+    subgraph Document_RAG ["Ingestion & Document RAG"]
+        DocStore[("Document Store (PDF / TXT in assets/sample_documents)")]
+        DocTools["document_tools (Text Extraction & Chunking)"]
+        RetrievalTools["retrieval_tools (Hybrid BM25 / Keyword Retrieval)"]
+        EvidenceLedger[("Evidence Registry (Stable IDs: EV-001..)")]
+
+        DocStore --> DocTools
+        DocTools --> RetrievalTools
+    end
+
+    subgraph Agent_Debate ["Adversarial Multi-Agent Committee"]
+        ResearchAgent["Research Agent<br/>(4 Python Tools: Search, Chunks, Metadata, Evidence Pack)"]
+        BullAgent["Bull Agent<br/>(3 Python Tools: Topic Evidence, Financial Facts, Claim Validator)"]
+        BearAgent["Bear Agent<br/>(3 Python Tools: Risk Evidence, Contradictions, Claim Validator)"]
+        RebuttalRound["Rebuttal Handler<br/>(3 Python Tools: Rank Arguments, Target Check, Claim Support)"]
+        RiskAgent["Risk Agent<br/>(3 Python Tools: Required Evidence, Risk Score, Threshold Gate)"]
+        JudgeAgent["Judge Agent<br/>(4 Python Tools: Validate Args, Citations Check, Policy, Veto Enforce)"]
+
+        Orchestrator --> ResearchAgent
+        ResearchAgent --> RetrievalTools
+        RetrievalTools --> EvidenceLedger
+        EvidenceLedger --> BullAgent
+        EvidenceLedger --> BearAgent
+        BullAgent --> RebuttalRound
+        BearAgent --> RebuttalRound
+        RebuttalRound --> RiskAgent
+        RiskAgent --> JudgeAgent
+        EvidenceLedger -.-> JudgeAgent
+    end
+
+    subgraph Risk_Veto_Enforcement ["Safety Gate & Override Policy"]
+        ThresholdCheck{"Risk Score >= 0.65<br/>or Critical Red Flag?"}
+        RiskAgent --> ThresholdCheck
+        ThresholdCheck -- "Yes (Veto True)" --> ForceHold["Mandatory Override to HOLD"]
+        ThresholdCheck -- "No" --> RetainDecision["Retain Judge Provisional Decision"]
+        ForceHold --> JudgeAgent
+        RetainDecision --> JudgeAgent
+    end
+
+    subgraph Audit_Persistence ["Storage & Append-Only Audit Trail"]
+        Database[("SQLite / PostgreSQL Database (storage/thesisforge.db)")]
+        RunLog[("Append-Only Run Log<br/>(logs/run_log.jsonl with SHA-256 Hash Chain)")]
+        FinalReportOut["Final Immutable Report<br/>(BUY / HOLD / AVOID + Citations)"]
+
+        JudgeAgent --> FinalReportOut
+        Orchestrator --> Database
+        Orchestrator --> RunLog
+        FinalReportOut --> WebUI
+    end

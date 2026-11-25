@@ -1,0 +1,38 @@
+INFOSYS LIMITED
+CIN: L85110KA1981PLC013115
+REGULATORY FILING WITH NATIONAL STOCK EXCHANGE OF INDIA (NSE) & BSE LIMITED
+UNAUDITED CONSOLIDATED FINANCIAL RESULTS FOR THE QUARTER ENDED SEPTEMBER 30, 2024 (Q2 FY25)
+Date of Exchange Filing: October 17, 2024
+
+--- PAGE 1 ---
+FINANCIAL PERFORMANCE OVERVIEW — Q2 FY 2024-25
+Infosys Limited reported consolidated revenue from operations of ₹40,986 crore for Q2 FY25, representing a 5.1% year-on-year growth in INR terms (3.1% year-on-year growth in constant currency terms).
+Consolidated Operating Profit (EBIT) for the quarter stood at ₹8,649 crore, resulting in an operating margin of 21.1%.
+Net Profit After Tax (PAT) reached ₹6,506 crore, up 4.7% year-on-year compared to ₹6,212 crore in Q2 FY24.
+Basic Earnings Per Share (EPS) for the quarter grew by 4.7% YoY to ₹15.71.
+The Board of Directors declared an interim dividend of ₹21.00 per equity share of face value ₹5 each.
+
+--- PAGE 2 ---
+BUSINESS MOMENTUM & DEAL CONTRACT VALUE
+Large deal Total Contract Value (TCV) for Q2 FY25 was robust at $2.4 billion, of which 52% was net new business, underscoring strong enterprise demand for generative AI, cloud migration, and SAP S/4HANA digital core transformations.
+Digital revenues contributed 62.4% of total company revenues, continuing to expand as global enterprise clients prioritize automation and generative AI deployments via Infosys Topaz.
+Voluntary attrition for IT services on a Last Twelve Months (LTM) basis declined to 12.9%, compared to 14.6% in the previous year, demonstrating stable workforce retention.
+Free Cash Flow (FCF) generated during the quarter was exceptionally strong at $840 million (₹7,040 crore), registering a growth of 25.2% year-on-year.
+
+--- PAGE 3 ---
+ANNUAL GUIDANCE & STRATEGIC OUTLOOK
+Based on robust H1 execution and large deal momentum, management revised upwards its FY 2024-25 constant currency revenue guidance to 3.75% – 4.50% (from the earlier guidance of 3.0% – 4.0%).
+Operating margin guidance for the full fiscal year FY 2024-25 was retained at 20.0% – 22.0%.
+Total cash and investments as of September 30, 2024 stood at ₹32,150 crore with zero long-term debt, providing superior financial flexibility and fortress balance-sheet security.
+
+--- PAGE 4 ---
+RISK FACTORS & MACROECONOMIC HEADWINDS
+1. Discretionary Spending Caution: Client decision cycles in financial services and capital markets across North America and Continental Europe remain cautious, leading to delays in uncommitted discretionary proof-of-concept projects.
+2. Wage Inflation & Subcontractor Costs: Enterprise salary adjustments and competitive talent acquisition in niche cloud architecture and cybersecurity present continuous operating margin headwinds.
+3. Foreign Exchange Volatility: Cross-currency fluctuations across USD, EUR, and GBP affect reported revenue realization, managed via systematic forward derivative hedging.
+
+--- PAGE 5 ---
+INDEPENDENT AUDITOR'S REPORT
+To the Board of Directors of Infosys Limited:
+We have reviewed the accompanying statement of unaudited consolidated financial results of Infosys Limited for the quarter ended September 30, 2024.
+In our opinion, the statements have been prepared in all material respects in accordance with Ind AS 34 and SEBI Listing Obligations and Disclosure Requirements (LODR). The report is unmodified.

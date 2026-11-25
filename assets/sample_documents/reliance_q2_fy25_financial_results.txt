@@ -1,0 +1,49 @@
+RELIANCE INDUSTRIES LIMITED
+CIN: L17110MH1973PLC019786
+REGULATORY FILING WITH NATIONAL STOCK EXCHANGE OF INDIA (NSE) & BSE LIMITED
+UNAUDITED CONSOLIDATED FINANCIAL RESULTS FOR THE QUARTER ENDED SEPTEMBER 30, 2024 (Q2 FY25)
+Date of Exchange Filing: October 14, 2024
+
+--- PAGE 1 ---
+FINANCIAL PERFORMANCE OVERVIEW — Q2 FY 2024-25
+Reliance Industries Limited reported consolidated Gross Revenue of ₹235,481 crore ($28.2 billion) for the quarter ended September 30, 2024, compared to ₹257,822 crore in Q1 FY25 and ₹231,886 crore revenue from operations.
+Consolidated EBITDA for Q2 FY25 stood at ₹43,934 crore ($5.3 billion), demonstrating strong contributions from consumer growth engines (Jio and Retail) offsetting cyclical weakness in downstream petrochemicals.
+Consolidated Net Profit After Tax (PAT) stood at ₹19,323 crore ($2.3 billion), with Net Profit attributable to owners of the company at ₹16,563 crore.
+Depreciation expense for the quarter was ₹12,108 crore and Finance Cost was ₹5,776 crore.
+Capital Expenditure for the quarter was ₹34,022 crore, primarily funded through internal cash accruals.
+
+--- PAGE 2 ---
+DIGITAL SERVICES (JIO PLATFORMS) & RETAIL SEGMENT PERFORMANCE
+1. Jio Platforms Limited:
+   - Gross revenue rose 18.0% YoY to ₹31,709 crore, with quarterly EBITDA up 17.8% YoY to ₹15,931 crore.
+   - Net Profit for Jio Platforms surged 23.4% YoY to ₹6,536 crore.
+   - ARPU (Average Revenue Per User) increased to ₹195.1 per subscriber per month following the tariff revision implemented in July 2024.
+   - Total subscriber base expanded to 498.8 million, with 5G subscriber migration surpassing 148 million subscribers.
+2. Reliance Retail Ventures Limited:
+   - Gross Revenue was ₹76,302 crore ($9.1 billion), impacted by subdued demand in fashion & lifestyle and rationalization of non-profitable store formats.
+   - Segment EBITDA stood at ₹5,850 crore with an EBITDA margin of 8.8% on net revenue.
+   - Registered customer base expanded to 327 million with total store footprint of 18,946 stores covering 79.4 million sq. ft.
+
+--- PAGE 3 ---
+OIL TO CHEMICALS (O2C) & ENERGY TRANSITION
+1. Downstream O2C Business:
+   - Segment revenue was ₹152,713 crore ($18.3 billion) with EBITDA of ₹12,413 crore, declining 23.7% YoY due to sharp decline in global fuel cracks.
+   - Singapore Gross Refining Margins (GRM) averaged $3.6/bbl against $9.5/bbl in Q2 FY24, reflecting global refining capacity additions and demand softness.
+   - Domestic fuel marketing and gas production from KG D6 block (averaging 29.5 MMSCMD) provided downside resilience.
+2. New Energy Gigafactory Rollout:
+   - Solar PV module manufacturing facility at Jamnagar on track for phased commissioning in late FY25.
+   - Initial module assembly lines validating 20GW planned integrated solar and energy storage architecture.
+
+--- PAGE 4 ---
+LEVERAGE, CAPITAL STRUCTURE & BALANCE SHEET
+As of September 30, 2024:
+- Outstanding Consolidated Debt stood at ₹336,339 crore ($40.3 billion).
+- Cash and Cash Equivalents (including current investments) stood at ₹219,939 crore ($26.3 billion).
+- Net Debt stood at ₹116,400 crore ($13.9 billion), representing a conservative Net Debt to LTM EBITDA ratio of approximately 0.67x.
+- Credit ratings reaffirmed at 'AAA' (Stable) by CRISIL and ICRA, and BBB+ (investment grade above sovereign) by S&P and Fitch.
+
+--- PAGE 5 ---
+MANAGEMENT GUIDANCE & PRIMARY RISKS
+1. Refining Crack Volatility: Downstream cyclicality remains vulnerable to European industrial slowdown and Chinese export quota dynamics.
+2. Capex Deployment: Continuous capital intensity in New Energy giga-factories and 5G network densification requires high operational cash conversion.
+3. Consumer ARPU Monetization: Sustained tariff elasticity in telecom and discretionary consumer spending revival in urban retail are key growth catalysts.

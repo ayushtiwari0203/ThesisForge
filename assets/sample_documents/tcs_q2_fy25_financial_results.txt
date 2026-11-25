@@ -1,0 +1,51 @@
+TATA CONSULTANCY SERVICES LIMITED
+CIN: L22210MH1995PLC084781
+REGULATORY FILING WITH NATIONAL STOCK EXCHANGE OF INDIA (NSE) & BSE LIMITED
+UNAUDITED CONSOLIDATED FINANCIAL RESULTS FOR THE QUARTER ENDED SEPTEMBER 30, 2024 (Q2 FY25)
+Date of Exchange Filing: October 10, 2024
+
+--- PAGE 1 ---
+FINANCIAL HIGHLIGHTS — Q2 FY 2024-25
+Tata Consultancy Services Limited reported consolidated revenue of ₹64,259 crore ($7.67 billion) for the quarter ended September 30, 2024, an increase of 7.6% YoY in INR terms and 5.5% YoY in constant currency.
+Operating Profit (EBIT) for Q2 FY25 stood at ₹15,465 crore ($1.85 billion), representing an operating margin of 24.1%, expanding by 20 basis points YoY despite annual wage hike cycles.
+Net Profit After Tax (PAT) reached ₹11,909 crore ($1.42 billion), growing 5.0% year-on-year.
+Basic Earnings Per Share (EPS) for the quarter stood at ₹32.74.
+The Board of Directors declared a second interim dividend of ₹10.00 per equity share of face value ₹1 each.
+
+--- PAGE 2 ---
+ORDER BOOK, DEAL WINS & INDUSTRY VERTICALS
+1. Order Book Momentum:
+   - Total Contract Value (TCV) signed in Q2 FY25 reached $8.6 billion across 14 mega deals and multiple enterprise AI transformations.
+   - BFSI TCV was $2.9 billion; Consumer Business TCV stood at $1.2 billion.
+2. Growth Drivers by Vertical:
+   - Energy, Resources & Utilities grew 7.0% YoY in CC.
+   - Manufacturing grew 5.3% YoY in CC.
+   - Regional Markets (India) surged 95.2% YoY driven by the execution of the state-owned BSNL nationwide 4G/5G deployment contract.
+   - BFSI vertical contracted marginally by 0.1% YoY, indicating lingering hesitation in discretionary US mortgage and investment banking IT budgets.
+3. AI and Generative AI Engagements:
+   - Enterprise AI pipeline doubled over six months to $1.5 billion, with over 600 active AI engagements utilizing TCS AI WisdomNext suite.
+
+--- PAGE 3 ---
+HUMAN CAPITAL, ATTRITION & CASH FLOWS
+1. Workforce Metrics:
+   - Total headcount as of September 30, 2024 was 612,724 employees, adding 5,726 net employees in Q2 FY25.
+   - IT services LTM attrition further moderated to 12.3%, well within the targeted management band of 11%–13%.
+2. Cash Conversion and Financial Position:
+   - Net cash provided by operating activities was ₹11,932 crore, representing 100.2% of net income.
+   - Free cash flow for the quarter stood at ₹10,950 crore.
+   - Total cash, bank balances, and liquid mutual fund investments stood at ₹46,280 crore with zero debt on the balance sheet.
+   - Return on Equity (ROE) annualized stood at 48.7% and Return on Invested Capital (ROIC) was 58.1%.
+
+--- PAGE 4 ---
+RISK FACTORS & STRATEGIC UNCERTAINTIES
+1. BFSI Sub-sector Sluggishness: While long-term transformational demand remains intact, North American banking institutions continue to delay non-critical discretionary spend pending interest rate cuts and economic clarity.
+2. Margin Pressure from BSNL Rollout: The large-scale hardware and network integration portion of the India regional contract carries lower gross margins than traditional software export services, requiring efficiency levers in offshore delivery to maintain target 26-28% margin corridors.
+3. Geopolitical and Visa Restrictions: Legislative proposals concerning H-1B visa fees and localized hiring mandates in North America and Western Europe necessitate continued local talent recruitment and training investments.
+
+--- PAGE 5 ---
+INDEPENDENT AUDITOR'S REVIEW REPORT
+To the Board of Directors of Tata Consultancy Services Limited:
+We have reviewed the accompanying statement of unaudited consolidated financial results of Tata Consultancy Services Limited and its subsidiaries for the quarter ended September 30, 2024.
+The review was conducted in accordance with Standard on Review Engagements (SRE) 2410.
+Based on our review, nothing has come to our attention that causes us to believe that the accompanying statement does not give a true and fair view in conformity with Ind AS 34.
+Report signed: B S R & Co. LLP, Chartered Accountants.

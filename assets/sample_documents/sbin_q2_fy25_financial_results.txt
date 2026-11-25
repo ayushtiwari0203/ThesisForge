@@ -1,0 +1,33 @@
+================================================================================
+STATE BANK OF INDIA
+UNAUDITED FINANCIAL RESULTS FOR THE QUARTER AND HALF YEAR ENDED SEPTEMBER 30, 2024
+Corporate Centre: State Bank Bhavan, Madame Cama Road, Nariman Point, Mumbai 400021
+Constitutional Authority: State Bank of India Act, 1955
+Filed with National Stock Exchange of India (NSE: SBIN) and BSE (500112)
+================================================================================
+
+1. FINANCIAL HIGHLIGHTS & RECORD PROFITABILITY
+- Standalone Net Profit for Q2 FY25 crossed a record INR 18,331 crore, reflecting a substantial 27.9% YoY increase over INR 14,330 crore in Q2 FY24.
+- Operating Profit for Q2 FY25 increased by 50.9% YoY to INR 29,294 crore from INR 19,417 crore in Q2 FY24.
+- Net Interest Income (NII) grew by 5.4% YoY to INR 41,620 crore compared to INR 39,500 crore in Q2 FY24.
+- Domestic Net Interest Margin (NIM) was 3.27% for Q2 FY25 compared to 3.35% in Q1 FY25 and 3.43% in Q2 FY24.
+- Return on Assets (RoA) for the quarter annualized at 1.17% (up 16 bps YoY); Return on Equity (RoE) annualized at 20.28%.
+
+2. ASSET QUALITY & PRUDENTIAL PROVISIONING
+- Gross Non-Performing Asset (GNPA) ratio improved to 2.13% as of September 30, 2024, down 42 bps YoY compared to 2.55% as of September 30, 2023.
+- Net Non-Performing Asset (NNPA) ratio improved to 0.53%, down 11 bps YoY compared to 0.64% on September 30, 2023.
+- Provision Coverage Ratio (PCR) including AUCA stood at 92.05%; PCR excluding AUCA was 75.40%.
+- Slippage ratio for Q2 FY25 improved to 0.51% compared to 0.84% in Q1 FY25. Credit cost stood at a modest 0.38%.
+
+3. LOAN BOOK & DEPOSIT ADVANCEMENT
+- Gross Whole Bank Advances grew by 15.0% YoY to INR 39,20,635 crore as of September 30, 2024, led by:
+  * Domestic Retail Personal Loans: INR 13,96,000 crore (up 12.3% YoY; Home Loans up 13.7%).
+  * SME Advances: INR 4,98,000 crore (up 17.4% YoY).
+  * Corporate Loans: INR 11,39,000 crore (up 18.3% YoY, backed by high-rated private and PSU capex).
+- Total Whole Bank Deposits grew by 9.1% YoY to INR 51,17,285 crore.
+- Domestic CASA Deposits stood at INR 20,18,000 crore with CASA ratio at 40.32%.
+
+4. CAPITAL ADEQUACY RATIOS & STATUTORY COMPLIANCE
+- Capital Adequacy Ratio (CAR) under Basel III stood at 13.76% as of September 30, 2024, with Tier-1 CAR at 11.45% and CET-1 at 10.15%.
+- Statutory Central Auditors (Joint audit of 12 firms) have submitted an unmodified limited review report without adverse qualifications.
+- Shareholding: Government of India (Promoter): 57.49%, FII / FPI: 11.02%, DII: 23.95%, Retail / Public: 7.54%.

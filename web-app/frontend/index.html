@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThesisForge AI — Evidence-Grounded Investment Committee & Trading Intelligence</title>
+  <style>
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: #1f2937;
+      --bg-card-hover: #283548;
+      --border-color: #374151;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --accent-blue: #3b82f6;
+      --accent-blue-hover: #2563eb;
+      --accent-green: #10b981;
+      --accent-yellow: #f59e0b;
+      --accent-red: #ef4444;
+      --accent-purple: #8b5cf6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand-tagline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .nav-badges {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .badge.healthy {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    .badge.warning {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+    .badge.danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+    .badge.synthetic {
+      background: rgba(139, 92, 246, 0.15);
+      color: #c084fc;
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+    .badge.real {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    main {
+      flex: 1;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 390px 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      main { grid-template-columns: 1fr; }
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Filter Controls */
+    .filter-tabs {
+      display: flex;
+      background: var(--bg-primary);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 3px;
+      margin-bottom: 0.75rem;
+    }
+    .filter-tab {
+      flex: 1;
+      text-align: center;
+      padding: 0.4rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .filter-tab.active {
+      background: var(--bg-card);
+      color: var(--text-main);
+    }
+
+    .search-box {
+      position: relative;
+      margin-bottom: 0.75rem;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.6rem 0.8rem 0.6rem 2.2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 0.85rem;
+      outline: none;
+    }
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+      font-weight: 500;
+    }
+    select, input[type="number"], input[type="text"], input[type="file"] {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      margin-bottom: 0.85rem;
+      outline: none;
+    }
+    select:focus, input:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .form-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.85rem;
+    }
+    .form-toggle input { width: auto; margin-bottom: 0; }
+
+    .btn {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--accent-blue);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: background 0.2s ease;
+    }
+    .btn:hover { background: var(--accent-blue-hover); }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.5rem 0.8rem;
+      font-size: 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: var(--bg-card-hover); }
+
+    .doc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    .doc-item {
+      padding: 0.6rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+    .doc-item-title { font-weight: 600; color: #93c5fd; }
+    .doc-item-meta { color: var(--text-muted); font-size: 0.75rem; margin-top: 2px; }
+
+    .notice-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 0.78rem;
+      color: #fbbf24;
+      line-height: 1.4;
+      margin-top: 0.5rem;
+    }
+
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      overflow-x: auto;
+    }
+    .tab {
+      padding: 0.5rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .tab.active {
+      color: var(--text-main);
+      background: var(--bg-card);
+    }
+
+    /* Decision banner */
+    .decision-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-color);
+    }
+    .rec-badge {
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+    .rec-BUY { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; }
+    .rec-HOLD { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b; }
+    .rec-AVOID { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
+
+    .veto-alert {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #ef4444;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+      color: #fca5a5;
+      font-size: 0.9rem;
+    }
+    .veto-alert strong { color: #fee2e2; }
+
+    /* Signal Card Style */
+    .signal-card-box {
+      background: linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.95));
+      border: 1px solid #3b82f6;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .signal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .signal-metric {
+      background: var(--bg-card);
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+    .signal-metric-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .signal-metric-val {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 2px;
+    }
+
+    /* Engine Cards */
+    .engine-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 860px) {
+      .engine-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Debate cards */
+    .debate-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .debate-grid { grid-template-columns: 1fr; }
+    }
+
+    .bull-card {
+      background: rgba(16, 185, 129, 0.05);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    .bear-card {
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .tag-evidence {
+      display: inline-block;
+      padding: 2px 6px;
+      background: #2563eb;
+      color: white;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-left: 4px;
+      cursor: pointer;
+    }
+
+    .rebuttal-box {
+      background: var(--bg-card);
+      border-left: 3px solid var(--accent-purple);
+      padding: 1rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    /* Trace timeline */
+    .trace-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+    .trace-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0.8rem;
+      background: var(--bg-card);
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-family: monospace;
+    }
+    .trace-seq { color: var(--accent-blue); font-weight: bold; width: 30px; }
+    .trace-actor { color: #e5e7eb; font-weight: 600; width: 220px; }
+    .trace-type { color: #9ca3af; }
+
+    /* Evidence ledger */
+    .evidence-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+    }
+    .evidence-table th, .evidence-table td {
+      border: 1px solid var(--border-color);
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+    }
+    .evidence-table th { background: var(--bg-card); color: var(--text-muted); }
+
+    /* Persona Review Cards */
+    .persona-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .persona-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .persona-title { font-weight: 700; color: #93c5fd; font-size: 0.95rem; }
+    .persona-lens { color: var(--text-muted); font-size: 0.78rem; }
+
+    /* Modal / Ingestion Drawer */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    /* Spinner */
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      border-top-color: white;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 1.5rem 2rem;
+      background: var(--bg-secondary);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="brand-logo">TF</div>
+      <div>
+        <div class="brand-title">ThesisForge AI</div>
+        <div class="brand-tagline">Evidence-Grounded Investment Committee & Trading Intelligence</div>
+      </div>
+    </div>
+    <div class="nav-badges">
+      <span class="badge healthy" id="api-status">● API Connected</span>
+      <span class="badge" id="universe-badge">Universe: 14 Equities</span>
+      <span class="badge" id="model-mode">Mode: Semantic Kernel</span>
+      <span class="badge" id="version-tag">Expert Review v2.0</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Left Sidebar: Stock Universe, Filters & Controls -->
+    <div class="sidebar">
+      <div class="card">
+        <div class="card-title">
+          <span>Investment Universe</span>
+          <button class="btn-secondary" id="btn-add-company-modal">+ Add Stock</button>
+        </div>
+
+        <!-- Filter tabs: All, Real Listed, Academic Demos -->
+        <div class="filter-tabs">
+          <div class="filter-tab active" data-filter="all" id="tab-filter-all">All (14)</div>
+          <div class="filter-tab" data-filter="real_listed" id="tab-filter-real">Real Listed (11)</div>
+          <div class="filter-tab" data-filter="synthetic_demo" id="tab-filter-demo">Academic Demos (3)</div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="company-search" class="search-input" placeholder="Search by company or NSE symbol..." />
+        </div>
+
+        <!-- Sector Filter -->
+        <label for="sector-filter">Sector Filter</label>
+        <select id="sector-filter">
+          <option value="all">All Sectors</option>
+        </select>
+
+        <!-- Company Select Dropdown -->
+        <label for="asset-select">Select Company for Research</label>
+        <select id="asset-select">
+          <option value="">Loading stocks...</option>
+        </select>
+
+        <!-- Dynamic Company Details & Badges -->
+        <div id="asset-meta" style="margin-bottom: 1rem; font-size: 0.8rem; background: var(--bg-card); padding: 0.75rem; border-radius: 8px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+            <span>Sector: <strong id="asset-sector" style="color: #e5e7eb;">--</strong></span>
+            <span id="asset-dataset-badge" class="badge">--</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span>Exchange: <strong id="asset-exchange" style="color: #e5e7eb;">NSE</strong></span>
+            <span id="asset-doc-badge" class="badge">--</span>
+          </div>
+        </div>
+
+        <div class="card-title">Research & Risk Parameters</div>
+
+        <!-- Research Mode Selector (Intraday vs Swing vs Positional) -->
+        <label for="research-mode-select">Research Horizon / Strategy Mode</label>
+        <select id="research-mode-select">
+          <option value="swing" selected>Swing Trading (2–10 Sessions)</option>
+          <option value="intraday">Intraday Trading (1 Session)</option>
+          <option value="positional">Positional Investment (Weeks/Months)</option>
+        </select>
+
+        <!-- Risk Budget Input -->
+        <label for="risk-budget-input">Risk Capital Budget (INR ₹)</label>
+        <input type="number" id="risk-budget-input" value="10000" min="1000" step="1000" />
+
+        <div class="form-toggle">
+          <input type="checkbox" id="risk-agent-toggle" checked />
+          <label for="risk-agent-toggle" style="margin-bottom: 0;">Include Risk Agent (with Safety Veto)</label>
+        </div>
+
+        <label for="risk-threshold">Risk Veto Threshold (0.0 – 1.0)</label>
+        <input type="number" id="risk-threshold" min="0.1" max="1.0" step="0.05" value="0.65" />
+
+        <button class="btn" id="run-btn">
+          <span id="btn-text">Execute Multi-Agent Research</span>
+          <div class="spinner" id="btn-spinner" style="display: none;"></div>
+        </button>
+      </div>
+
+      <!-- Ingested Documents Pack -->
+      <div class="card">
+        <div class="card-title">
+          <span>Provided Document Pack</span>
+          <span class="badge" id="doc-count">0 Docs</span>
+        </div>
+        <ul class="doc-list" id="doc-list">
+          <li style="color: var(--text-muted); font-size: 0.8rem;">Select a company to view documents.</li>
+        </ul>
+
+        <!-- Pending Documents Advisory Notice -->
+        <div id="pending-docs-notice" class="notice-box" style="display: none;">
+          ⚠️ <strong>Documents Pending:</strong> No primary filings have been ingested yet for this company. In compliance with strict academic integrity, ThesisForge <strong>never fabricates financial data</strong>.
+          <br /><br />
+          Running a debate will safely produce an <em>INSUFFICIENT_EVIDENCE</em> report (HOLD) until authentic filings are uploaded below.
+        </div>
+
+        <!-- In-card Ingest Upload Form -->
+        <div style="margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem;">
+          <label for="upload-doc-file" style="font-size: 0.78rem;">Upload Official Filing (PDF / TXT):</label>
+          <input type="file" id="upload-doc-file" accept=".pdf,.txt" style="margin-bottom: 0.5rem; font-size: 0.78rem;" />
+          <button class="btn-secondary" id="btn-upload-doc" style="width: 100%;">Upload & Ingest to RAG</button>
+          <div id="upload-status" style="font-size: 0.75rem; margin-top: 4px; color: var(--text-muted);"></div>
+        </div>
+      </div>
+
+      <!-- Append-Only Audit Log Status -->
+      <div class="card">
+        <div class="card-title">Append-Only Run Log</div>
+        <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+          Cryptographic hash-chaining verification:
+        </div>
+        <div id="chain-status" class="badge healthy" style="display: inline-block;">Chain Verified: True</div>
+        <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-muted);">
+          Persisted at: <code>logs/run_log.jsonl</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Content Area: Results, Debate, Evidence, Trace -->
+    <div class="content-area">
+      <!-- Tabs -->
+      <div class="tabs">
+        <div class="tab active" data-tab="tab-report">Research Report</div>
+        <div class="tab" data-tab="tab-signal">Actionable Signal Card</div>
+        <div class="tab" data-tab="tab-coverage">Coverage Dashboard (12-Doc Package)</div>
+        <div class="tab" data-tab="tab-debate">Debate & Rebuttals</div>
+        <div class="tab" data-tab="tab-evidence">Evidence Ledger</div>
+        <div class="tab" data-tab="tab-experts">Expert Review Lenses (10)</div>
+        <div class="tab" data-tab="tab-signals-ledger">Signal Ledger</div>
+        <div class="tab" data-tab="tab-trace">Execution Trace</div>
+        <div class="tab" data-tab="tab-universe">Stock Universe</div>
+        <div class="tab" data-tab="tab-about">About & Integrity</div>
+      </div>
+
+      <!-- Tab 1: Research Report -->
+      <div id="tab-report" class="tab-pane">
+        <div id="report-empty" class="card" style="text-align: center; padding: 3rem;">
+          <h3 style="color: var(--text-muted); font-weight: 500;">No Active Research Run</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">
+            Select a stock and click "Execute Multi-Agent Research" to trigger the committee debate and trading intelligence engines.
+          </p>
+        </div>
+
+        <div id="report-content" style="display: none; flex-direction: column; gap: 1.5rem;">
+          <!-- Decision Banner -->
+          <div class="decision-banner">
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">FINAL COMMITTEE RECOMMENDATION</div>
+              <div style="font-size: 1.5rem; font-weight: 700; margin-top: 2px;" id="report-asset-name">--</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Run ID: <code id="report-run-id">--</code> • Mode: <strong id="report-mode-tag" style="color: #60a5fa;">SWING</strong></div>
+            </div>
+            <div class="rec-badge" id="report-rec-badge">HOLD</div>
+          </div>
+
+          <!-- Risk Veto Notification (if triggered) -->
+          <div id="report-veto-banner" class="veto-alert" style="display: none;">
+            <strong>⚠️ Risk Agent Safety Veto Triggered:</strong>
+            <span id="report-veto-reason">Risk score exceeded safety threshold. Provisional recommendation was overridden to HOLD.</span>
+          </div>
+
+          <!-- Actionable Signal Quick Summary Box -->
+          <div class="signal-card-box" id="quick-signal-box">
+            <div class="signal-header">
+              <div>
+                <strong id="signal-setup-title" style="color: #93c5fd; font-size: 1.05rem;">Technical Trend Structure</strong>
+                <div style="font-size: 0.78rem; color: var(--text-muted);" id="signal-actionability-reason">Evaluating actionability...</div>
+              </div>
+              <span id="signal-actionable-badge" class="badge">--</span>
+            </div>
+            <div class="signal-grid">
+              <div class="signal-metric">
+                <div class="signal-metric-label">Ref Price</div>
+                <div class="signal-metric-val" id="sig-ref-price">₹--</div>
+              </div>
+              <div class="signal-metric">
+                <div class="signal-metric-label">Entry Trigger</div>
+                <div class="signal-metric-val" id="sig-entry-trigger" style="color: #60a5fa;">₹--</div>
+              </div>
+              <div class="signal-metric">
+                <div class="signal-metric-label">Stop-Loss (SL)</div>
+                <div class="signal-metric-val" id="sig-stop-loss" style="color: #f87171;">₹--</div>
+              </div>
+              <div class="signal-metric">
+                <div class="signal-metric-label">Target 1</div>
+                <div class="signal-metric-val" id="sig-target-1" style="color: #34d399;">₹--</div>
+              </div>
+              <div class="signal-metric">
+                <div class="signal-metric-label">Reward / Risk</div>
+                <div class="signal-metric-val" id="sig-rr">--</div>
+              </div>
+              <div class="signal-metric">
+                <div class="signal-metric-label">Position Qty</div>
+                <div class="signal-metric-val" id="sig-qty">-- shares</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical & Derivatives Engines Overview -->
+          <div class="engine-grid">
+            <div class="card">
+              <div class="card-title" style="color: #60a5fa;">Technical Structure Engine</div>
+              <div style="font-size: 0.85rem; line-height: 1.6;">
+                <div>Trend: <strong id="tech-trend" style="color: #e5e7eb;">--</strong></div>
+                <div>RSI (14): <strong id="tech-rsi">--</strong> • ATR (14): <strong id="tech-atr">--</strong></div>
+                <div>EMA 21: <strong id="tech-ema21">--</strong> • EMA 50: <strong id="tech-ema50">--</strong></div>
+                <div>Relative Strength vs Nifty: <strong id="tech-rs">--</strong></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title" style="color: #c084fc;">Derivatives & Futures OI Engine</div>
+              <div style="font-size: 0.85rem; line-height: 1.6;">
+                <div>Buildup: <strong id="deriv-buildup" style="color: #e5e7eb;">--</strong></div>
+                <div>Futures Price: <strong id="deriv-fut-px">--</strong> • Basis: <strong id="deriv-basis">--</strong></div>
+                <div>Put-Call Ratio (PCR): <strong id="deriv-pcr">--</strong></div>
+                <div>Call Wall: <strong id="deriv-call-wall">--</strong> • Put Wall: <strong id="deriv-put-wall">--</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Strongest Points Overview -->
+          <div class="debate-grid">
+            <div class="card bull-card">
+              <div class="card-title" style="color: #34d399;">Strongest Bull Argument</div>
+              <p id="strongest-bull-text" style="font-size: 0.9rem; line-height: 1.6;"></p>
+              <div style="margin-top: 0.75rem;" id="strongest-bull-evidence"></div>
+            </div>
+            <div class="card bear-card">
+              <div class="card-title" style="color: #f87171;">Strongest Bear Vulnerability</div>
+              <p id="strongest-bear-text" style="font-size: 0.9rem; line-height: 1.6;"></p>
+              <div style="margin-top: 0.75rem;" id="strongest-bear-evidence"></div>
+            </div>
+          </div>
+
+          <!-- Judge Deciding Reasons -->
+          <div class="card">
+            <div class="card-title">Judge's Deciding Rationale & Grounded Reasons</div>
+            <div id="deciding-reasons-list" style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem;"></div>
+          </div>
+
+          <!-- Valuation & Fundamentals Context -->
+          <div class="card">
+            <div class="card-title" style="color: #fbbf24;">Valuation & Capital Efficiency Quality Context</div>
+            <div id="val-context-box" style="font-size: 0.85rem; color: #d1d5db; line-height: 1.6;">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Uncertainties & Limitations -->
+          <div class="card">
+            <div class="card-title">Identified Uncertainties & Coverage Limitations</div>
+            <ul id="uncertainties-list" style="padding-left: 1.25rem; font-size: 0.85rem; color: var(--text-muted);"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Full Actionable Signal Card -->
+      <div id="tab-signal" class="tab-pane" style="display: none;">
+        <div class="card">
+          <div class="card-title">
+            <span>Mandatory Actionable Signal Card (Section 5 Contract)</span>
+            <span class="badge" id="signal-card-mode-badge">Mode: Swing</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Standardized execution parameters for trading discipline, risk budget position sizing, and thesis invalidation.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+            <div class="signal-metric">
+              <div class="signal-metric-label">Execution Status</div>
+              <div class="signal-metric-val" id="card-actionable-status" style="font-size: 1rem;">--</div>
+            </div>
+            <div class="signal-metric">
+              <div class="signal-metric-label">Directional Decision</div>
+              <div class="signal-metric-val" id="card-decision" style="font-size: 1rem;">--</div>
+            </div>
+          </div>
+
+          <table class="evidence-table">
+            <tbody>
+              <tr><td style="width: 220px; font-weight: 600;">Instrument & Exchange</td><td id="card-instrument">--</td></tr>
+              <tr><td style="font-weight: 600;">Current Reference Price</td><td id="card-ref-price">--</td></tr>
+              <tr><td style="font-weight: 600;">Entry Trigger vs Zone</td><td id="card-entry-details">--</td></tr>
+              <tr><td style="font-weight: 600;">Stop-Loss & Method</td><td id="card-stop-details">--</td></tr>
+              <tr><td style="font-weight: 600;">Thesis Invalidation Level</td><td id="card-invalidation-reason">--</td></tr>
+              <tr><td style="font-weight: 600;">Targets (T1 / T2) & R:R</td><td id="card-target-details">--</td></tr>
+              <tr><td style="font-weight: 600;">Position Sizing Formula</td><td><code>Quantity = floor(Allowed Rupee Risk ÷ (Entry Price − Stop Price))</code></td></tr>
+              <tr><td style="font-weight: 600;">Suggested Share Quantity</td><td id="card-quantity-details">--</td></tr>
+              <tr><td style="font-weight: 600;">Holding Horizon</td><td id="card-holding-window">--</td></tr>
+              <tr><td style="font-weight: 600;">Slippage & Impact Caveats</td><td id="card-slippage-caveats">--</td></tr>
+              <tr><td style="font-weight: 600;">No-Trade Invalidation Conditions</td><td id="card-no-trade-conditions">--</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 3: Full Debate & Rebuttals -->
+      <div id="tab-debate" class="tab-pane" style="display: none;">
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <div class="card-title">Structured 1-Turn Rebuttal Round</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            SRS Section 5 Requirement: Bull and Bear agents exchange exactly one structured rebuttal targeting each other's strongest arguments, preventing infinite debate loops.
+          </div>
+          <div class="rebuttal-box" style="border-left-color: #34d399;">
+            <div style="font-weight: 600; color: #34d399; margin-bottom: 4px;">Bull Rebuttal to Bear's Primary Risk</div>
+            <div id="rebuttal-bull-text" style="color: #e5e7eb;">--</div>
+            <div id="rebuttal-bull-eids" style="margin-top: 6px;"></div>
+          </div>
+          <div class="rebuttal-box" style="border-left-color: #f87171; margin-top: 1rem;">
+            <div style="font-weight: 600; color: #f87171; margin-bottom: 4px;">Bear Counter-Challenge to Bull's Core Thesis</div>
+            <div id="rebuttal-bear-text" style="color: #e5e7eb;">--</div>
+            <div id="rebuttal-bear-eids" style="margin-top: 6px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Evidence Ledger -->
+      <div id="tab-evidence" class="tab-pane" style="display: none;">
+        <div class="card">
+          <div class="card-title">
+            <span>Evidence Ledger & Verified Citations</span>
+            <span class="badge" id="evidence-count-badge">0 Items</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            All agent claims must resolve to these verifiable, passage-grounded evidence citations extracted directly from ingested disclosures.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="evidence-table">
+              <thead>
+                <tr>
+                  <th style="width: 90px;">Code</th>
+                  <th style="width: 140px;">Type</th>
+                  <th>Passage Extract / Numerical Disclosure</th>
+                  <th style="width: 220px;">Source Document</th>
+                </tr>
+              </thead>
+              <tbody id="evidence-table-body">
+                <tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No evidence loaded.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: Expert Review Personas -->
+      <div id="tab-experts" class="tab-pane" style="display: none;">
+        <div class="card">
+          <div class="card-title">
+            <span>Ten Methodology-Inspired Review Personas (Simulated Lenses)</span>
+            <span class="badge healthy">10 Analytical Lenses Active</span>
+          </div>
+          <div class="notice-box" style="margin-bottom: 1.25rem;">
+            ℹ️ <strong>Governance Notice:</strong> These personas are simulated review lenses inspired by publicly documented research philosophies. They are quality-assurance lenses only and do NOT vote on BUY/SELL. The Judge Agent and Risk Veto remain the sole decision authorities.
+          </div>
+          <div id="persona-reviews-container">
+            <div style="color: var(--text-muted); font-size: 0.85rem;">Run research to view simulated expert persona audits.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 6: Signal Ledger -->
+      <div id="tab-signals-ledger" class="tab-pane" style="display: none;">
+        <div class="card">
+          <div class="card-title">
+            <span>Historical Signal Ledger (Persistent Database)</span>
+            <button class="btn-secondary" id="btn-refresh-signals">Refresh Signals</button>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Versioned historical record of generated trade signals, levels, execution status, and outcomes.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="evidence-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Symbol</th>
+                  <th>Mode</th>
+                  <th>Decision</th>
+                  <th>Entry Trigger</th>
+                  <th>Stop-Loss</th>
+                  <th>Target 1</th>
+                  <th>R:R</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="signal-ledger-tbody">
+                <!-- Dynamically loaded -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 7: Execution Trace -->
+      <div id="tab-trace" class="tab-pane" style="display: none;">
+        <div class="card">
+          <div class="card-title">
+            <span>Deterministic Agent Execution Trace</span>
+            <span class="badge" id="trace-count-badge">0 Events</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            State transitions and cryptographic SHA-256 hash chaining of all pipeline events.
+          </p>
+          <div class="trace-list" id="trace-list">
+            <div style="color: var(--text-muted); font-size: 0.85rem;">Run the committee to view audit trace.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 8: Stock Universe Overview -->
+      <div id="tab-universe" class="tab-pane" style="display: none;">
+        <div class="card">
+          <div class="card-title">
+            <span>Company Master Universe (14 Companies)</span>
+            <span class="badge healthy">11 Real NSE + 3 Academic Demos</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Strict evidentiary separation: Real listed equities use authentic exchange filings or are labeled pending. Demo companies serve as controlled scenario benchmarks.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="evidence-table">
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Company Name</th>
+                  <th>Dataset Type</th>
+                  <th>Sector</th>
+                  <th>ISIN</th>
+                  <th>Documents</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="universe-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Document Coverage Dashboard -->
+      <div id="tab-coverage" class="tab-pane" style="display: none;">
+        <div class="card">
+          <div class="card-title">
+            <span>Standard Document Package & Research Readiness Dashboard</span>
+            <button class="btn-secondary" id="btn-refresh-coverage" onclick="refreshCoverageAudit()">⚡ Re-Audit Coverage</button>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Audited coverage of the <strong>12 Standard Document Categories</strong> (Annual Reports, Quarterly Results, Balance Sheets, Cash Flows, Shareholding, Presentations, Transcripts, Announcements, Auditor Reports, Credit Ratings, Corporate Actions, Sector Disclosures) and <strong>3–5 Years of Historical OHLCV Market Data</strong> across the entire stock universe.
+          </p>
+
+          <!-- Metrics summary grid -->
+          <div class="signal-grid" style="grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-bottom: 1.25rem;">
+            <div class="signal-metric">
+              <div class="signal-metric-label">Universe Tracked</div>
+              <div class="signal-metric-val" id="cov-metric-total">15 Stocks</div>
+            </div>
+            <div class="signal-metric">
+              <div class="signal-metric-label">Research Ready</div>
+              <div class="signal-metric-val" id="cov-metric-ready" style="color: #34d399;">15 Ready</div>
+            </div>
+            <div class="signal-metric">
+              <div class="signal-metric-label">Catalog Filings Available</div>
+              <div class="signal-metric-val" id="cov-metric-available" style="color: #60a5fa;">109 Files</div>
+            </div>
+            <div class="signal-metric">
+              <div class="signal-metric-label">5-Yr Market Bars Ingested</div>
+              <div class="signal-metric-val" id="cov-metric-bars" style="color: #c084fc;">16,400+ Bars</div>
+            </div>
+          </div>
+
+          <!-- Coverage Table -->
+          <div style="overflow-x: auto;">
+            <table class="evidence-table">
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Company Name</th>
+                  <th>Standard Docs (Available / 12)</th>
+                  <th>Pending / Archived</th>
+                  <th>Historical Market Data</th>
+                  <th>Fund. Cov</th>
+                  <th>Tech. Cov</th>
+                  <th>Overall Readiness</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="coverage-table-body">
+                <!-- Dynamically populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 9: About & Academic Integrity -->
+      <div id="tab-about" class="tab-pane" style="display: none;">
+        <div class="card">
+          <div class="card-title">ThesisForge AI — Architectural Overview</div>
+          <p style="font-size: 0.88rem; line-height: 1.7; color: #d1d5db; margin-bottom: 1rem;">
+            ThesisForge AI is an evidence-grounded, multi-agent investment research committee built for the MTM606 / CSE476 assignment. It replaces black-box LLM hallucinations with a deterministic, adversarial debate architecture and actionable risk-defined signal cards.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+            <div style="background: var(--bg-card); padding: 1rem; border-radius: 8px;">
+              <strong style="color: #60a5fa;">1. Strict Anti-Fabrication</strong>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Zero synthetic financial metrics for real companies. Filings are authentic NSE/BSE disclosures.</p>
+            </div>
+            <div style="background: var(--bg-card); padding: 1rem; border-radius: 8px;">
+              <strong style="color: #34d399;">2. Adversarial Rebuttal</strong>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">1-turn bounded rebuttal round between Bull and Bear agents targeting opposing strongest arguments.</p>
+            </div>
+            <div style="background: var(--bg-card); padding: 1rem; border-radius: 8px;">
+              <strong style="color: #ef4444;">3. Independent Risk Veto</strong>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Asymmetric downside gatekeeper overriding BUY to HOLD when leverage or risk crosses safety threshold.</p>
+            </div>
+            <div style="background: var(--bg-card); padding: 1rem; border-radius: 8px;">
+              <strong style="color: #c084fc;">4. Actionable Trade Cards</strong>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Standardized execution triggers, invalidation stop-loss, profit targets, and capital position sizing formula.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add Company Modal -->
+  <div class="modal-overlay" id="add-company-modal">
+    <div class="modal">
+      <div class="card-title">
+        <span>Add New Listed Equity</span>
+        <button class="btn-secondary" id="btn-close-modal" style="padding: 2px 8px;">✕</button>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+        Add an NSE stock to the database without modifying application code.
+      </p>
+      <label for="new-company-name">Company Name *</label>
+      <input type="text" id="new-company-name" placeholder="e.g. Asian Paints Limited" />
+
+      <label for="new-company-symbol">NSE Ticker Symbol *</label>
+      <input type="text" id="new-company-symbol" placeholder="e.g. ASIANPAINT" />
+
+      <label for="new-company-sector">Sector *</label>
+      <input type="text" id="new-company-sector" placeholder="e.g. Consumer Goods & Paints" />
+
+      <label for="new-company-isin">ISIN (Optional)</label>
+      <input type="text" id="new-company-isin" placeholder="e.g. INE021A01026" />
+
+      <label for="new-company-desc">Description (Optional)</label>
+      <input type="text" id="new-company-desc" placeholder="Brief business overview" />
+
+      <button class="btn" id="btn-save-new-company">Register Company</button>
+      <div id="add-company-status" style="font-size: 0.8rem; margin-top: 6px;"></div>
+    </div>
+  </div>
+
+  <!-- Document Package 12-Category Detail Modal -->
+  <div class="modal-overlay" id="coverage-detail-modal">
+    <div class="modal" style="max-width: 900px; max-height: 85vh; overflow-y: auto;">
+      <div class="card-title">
+        <span id="modal-coverage-title">Standard 12-Category Document Audit</span>
+        <button class="btn-secondary" onclick="closeCoverageModal()" style="padding: 2px 8px;">✕</button>
+      </div>
+      <p id="modal-coverage-subtitle" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+        Detailed audit of official filing disclosures and market price history.
+      </p>
+
+      <div style="overflow-x: auto;">
+        <table class="evidence-table" style="font-size: 0.8rem;">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Category Name</th>
+              <th>Period</th>
+              <th>Status</th>
+              <th>Extraction</th>
+              <th>Official Source / Disclosure Portal</th>
+            </tr>
+          </thead>
+          <tbody id="modal-coverage-table-body">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    ThesisForge AI — Academic Investment Committee System • Built strictly to SRS & Expert Review Specification • NSE Universe (15 Equities)
+  </footer>
+
+  <script>
+    let allAssets = [];
+    let currentFilter = "all";
+    let currentSector = "all";
+    let searchQuery = "";
+    let currentRunId = null;
+    let pollInterval = null;
+
+    // Tab switching
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        document.querySelectorAll(".tab-pane").forEach(p => p.style.display = "none");
+        tab.classList.add("active");
+        const target = tab.dataset.tab;
+        document.getElementById(target).style.display = "block";
+
+        if (target === "tab-signals-ledger") {
+          loadSignalLedger();
+        } else if (target === "tab-coverage") {
+          loadCoverageDashboard();
+        }
+      });
+    });
+
+    // Dataset Filter Tabs
+    document.querySelectorAll(".filter-tab").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-tab").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.dataset.filter;
+        renderAssetDropdown();
+      });
+    });
+
+    // Search bar input
+    document.getElementById("company-search").addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      renderAssetDropdown();
+    });
+
+    // Sector select change
+    document.getElementById("sector-filter").addEventListener("change", (e) => {
+      currentSector = e.target.value;
+      renderAssetDropdown();
+    });
+
+    async function init() {
+      await loadSectors();
+      await loadAssets();
+      await loadSignalLedger();
+      await loadCoverageDashboard();
+    }
+
+    async function loadSectors() {
+      try {
+        const res = await fetch("/api/v1/sectors");
+        if (res.ok) {
+          const sectors = await res.json();
+          const sel = document.getElementById("sector-filter");
+          sel.innerHTML = '<option value="all">All Sectors</option>';
+          sectors.forEach(s => {
+            const opt = document.createElement("option");
+            opt.value = s;
+            opt.textContent = s;
+            sel.appendChild(opt);
+          });
+        }
+      } catch (err) {
+        console.error("Failed to load sectors:", err);
+      }
+    }
+
+    async function loadAssets() {
+      try {
+        const res = await fetch("/api/v1/assets");
+        allAssets = await res.json();
+        document.getElementById("universe-badge").textContent = `Universe: ${allAssets.length} Equities`;
+        updateFilterTabCounts();
+        renderAssetDropdown();
+        renderUniverseTable();
+      } catch (err) {
+        console.error("Failed to load assets:", err);
+        document.getElementById("asset-select").innerHTML = '<option value="">Error connecting to API</option>';
+      }
+    }
+
+    function updateFilterTabCounts() {
+      const realCount = allAssets.filter(a => a.dataset_type === "real_listed").length;
+      const demoCount = allAssets.filter(a => a.dataset_type === "synthetic_demo").length;
+      document.getElementById("tab-filter-all").textContent = `All (${allAssets.length})`;
+      document.getElementById("tab-filter-real").textContent = `Real Listed (${realCount})`;
+      document.getElementById("tab-filter-demo").textContent = `Academic Demos (${demoCount})`;
+    }
+
+    function renderAssetDropdown() {
+      const sel = document.getElementById("asset-select");
+      const currentSelectedId = sel.value;
+      sel.innerHTML = "";
+
+      const filtered = allAssets.filter(a => {
+        if (currentFilter !== "all" && a.dataset_type !== currentFilter) return false;
+        if (currentSector !== "all" && (a.sector || "").toLowerCase() !== currentSector.toLowerCase()) return false;
+        if (searchQuery) {
+          const matchName = (a.name || "").toLowerCase().includes(searchQuery);
+          const matchSymbol = (a.symbol || "").toLowerCase().includes(searchQuery);
+          if (!matchName && !matchSymbol) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "No matching stocks found";
+        sel.appendChild(opt);
+        return;
+      }
+
+      filtered.forEach(a => {
+        const opt = document.createElement("option");
+        opt.value = a.id;
+        const tag = a.dataset_type === "synthetic_demo" ? "[DEMO]" : "[NSE]";
+        const docBadge = a.document_count > 0 ? `(${a.document_count} doc)` : "(docs pending)";
+        opt.textContent = `${tag} ${a.name} (${a.symbol}) ${docBadge}`;
+        sel.appendChild(opt);
+      });
+
+      if (filtered.some(a => a.id === currentSelectedId)) {
+        sel.value = currentSelectedId;
+      } else {
+        sel.value = filtered[0].id;
+      }
+
+      onAssetSelected(sel.value);
+    }
+
+    function renderUniverseTable() {
+      const tbody = document.getElementById("universe-table-body");
+      tbody.innerHTML = "";
+      allAssets.forEach(a => {
+        const tr = document.createElement("tr");
+        const isReal = a.dataset_type === "real_listed";
+        const hasDocs = a.document_count > 0;
+        tr.innerHTML = `
+          <td><strong>${a.symbol}</strong></td>
+          <td>${a.name}</td>
+          <td><span class="badge ${isReal ? 'real' : 'synthetic'}">${isReal ? 'Real Listed (NSE)' : 'Academic Demo'}</span></td>
+          <td>${a.sector || '--'}</td>
+          <td style="font-family: monospace; font-size: 0.78rem;">${a.isin || '--'}</td>
+          <td>${a.document_count} document(s)</td>
+          <td><span class="badge ${hasDocs ? 'healthy' : 'warning'}">${hasDocs ? 'Authentic Filings' : 'Documents Pending'}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function onAssetSelected(assetId) {
+      if (!assetId) return;
+      const asset = allAssets.find(a => a.id === assetId);
+      if (!asset) return;
+
+      document.getElementById("asset-sector").textContent = asset.sector || "General";
+      document.getElementById("asset-exchange").textContent = asset.exchange || "NSE";
+
+      const dsBadge = document.getElementById("asset-dataset-badge");
+      if (asset.dataset_type === "real_listed") {
+        dsBadge.className = "badge real";
+        dsBadge.textContent = "Real Listed Equity";
+      } else {
+        dsBadge.className = "badge synthetic";
+        dsBadge.textContent = "Academic Demo";
+      }
+
+      const docBadge = document.getElementById("asset-doc-badge");
+      const noticeBox = document.getElementById("pending-docs-notice");
+
+      if (asset.document_count > 0) {
+        docBadge.className = "badge healthy";
+        docBadge.textContent = `Authentic Filings (${asset.document_count})`;
+        noticeBox.style.display = "none";
+      } else {
+        docBadge.className = "badge warning";
+        docBadge.textContent = "Company added — documents pending";
+        noticeBox.style.display = "block";
+      }
+
+      try {
+        const res = await fetch(`/api/v1/assets/${assetId}/documents`);
+        const docs = await res.json();
+        const list = document.getElementById("doc-list");
+        list.innerHTML = "";
+        document.getElementById("doc-count").textContent = `${docs.length} Docs`;
+
+        if (docs.length === 0) {
+          list.innerHTML = `<li style="color: var(--text-muted); font-size: 0.8rem; padding: 0.4rem;">No documents ingested for this asset.</li>`;
+        } else {
+          docs.forEach(d => {
+            const li = document.createElement("li");
+            li.className = "doc-item";
+            li.innerHTML = `
+              <div class="doc-item-title">${d.filename}</div>
+              <div class="doc-item-meta">${d.source} • ${d.page_count} page(s) • ${d.doc_type}</div>
+            `;
+            list.appendChild(li);
+          });
+        }
+      } catch (err) {
+        console.error("Error loading docs:", err);
+      }
+    }
+
+    document.getElementById("asset-select").addEventListener("change", (e) => onAssetSelected(e.target.value));
+
+    // Upload & Ingest document
+    document.getElementById("btn-upload-doc").addEventListener("click", async () => {
+      const assetId = document.getElementById("asset-select").value;
+      const fileInput = document.getElementById("upload-doc-file");
+      const statusDiv = document.getElementById("upload-status");
+
+      if (!fileInput.files || fileInput.files.length === 0) {
+        alert("Please select a PDF or TXT file to upload.");
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append("asset_id", assetId);
+      formData.append("source", "User Uploaded Primary Disclosure");
+      formData.append("doc_type", "annual_report");
+      formData.append("file", file);
+
+      statusDiv.textContent = "Uploading & indexing into RAG ledger...";
+      statusDiv.style.color = "var(--accent-blue)";
+
+      try {
+        const res = await fetch("/api/v1/documents/ingest", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (res.ok) {
+          statusDiv.textContent = "✓ Ingestion complete! Document ready for research.";
+          statusDiv.style.color = "var(--accent-green)";
+          fileInput.value = "";
+          await loadAssets();
+          onAssetSelected(assetId);
+        } else {
+          const errData = await res.json();
+          statusDiv.textContent = "Error: " + (errData.detail || "Ingestion failed");
+          statusDiv.style.color = "var(--accent-red)";
+        }
+      } catch (err) {
+        statusDiv.textContent = "Upload failed: " + err.message;
+        statusDiv.style.color = "var(--accent-red)";
+      }
+    });
+
+    // Add company modal open/close
+    document.getElementById("btn-add-company-modal").addEventListener("click", () => {
+      document.getElementById("add-company-modal").style.display = "flex";
+      document.getElementById("add-company-status").textContent = "";
+    });
+    document.getElementById("btn-close-modal").addEventListener("click", () => {
+      document.getElementById("add-company-modal").style.display = "none";
+    });
+
+    document.getElementById("btn-save-new-company").addEventListener("click", async () => {
+      const name = document.getElementById("new-company-name").value.trim();
+      const symbol = document.getElementById("new-company-symbol").value.trim().toUpperCase();
+      const sector = document.getElementById("new-company-sector").value.trim();
+      const isin = document.getElementById("new-company-isin").value.trim() || null;
+      const desc = document.getElementById("new-company-desc").value.trim() || null;
+      const statusDiv = document.getElementById("add-company-status");
+
+      if (!name || !symbol || !sector) {
+        statusDiv.textContent = "Company name, symbol, and sector are required.";
+        statusDiv.style.color = "var(--accent-red)";
+        return;
+      }
+
+      try {
+        const res = await fetch("/api/v1/assets", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            symbol,
+            exchange: "NSE",
+            isin,
+            sector,
+            description: desc,
+            dataset_type: "real_listed",
+            document_status: "documents_pending",
+          }),
+        });
+
+        if (res.ok) {
+          statusDiv.textContent = `✓ ${symbol} registered! You can now ingest filings.`;
+          statusDiv.style.color = "var(--accent-green)";
+          await loadSectors();
+          await loadAssets();
+          setTimeout(() => {
+            document.getElementById("add-company-modal").style.display = "none";
+            document.getElementById("asset-select").value = (allAssets.find(a => a.symbol === symbol) || {}).id;
+            onAssetSelected(document.getElementById("asset-select").value);
+          }, 1000);
+        } else {
+          const errData = await res.json();
+          statusDiv.textContent = "Error: " + (errData.detail || "Registration failed");
+          statusDiv.style.color = "var(--accent-red)";
+        }
+      } catch (err) {
+        statusDiv.textContent = "Error: " + err.message;
+        statusDiv.style.color = "var(--accent-red)";
+      }
+    });
+
+    // Execute research run
+    document.getElementById("run-btn").addEventListener("click", async () => {
+      const assetId = document.getElementById("asset-select").value;
+      if (!assetId) {
+        alert("Please select a company first.");
+        return;
+      }
+
+      const researchMode = document.getElementById("research-mode-select").value;
+      const riskBudget = parseFloat(document.getElementById("risk-budget-input").value) || 10000.0;
+      const includeRisk = document.getElementById("risk-agent-toggle").checked;
+      const riskThreshold = parseFloat(document.getElementById("risk-threshold").value) || 0.65;
+
+      const btn = document.getElementById("run-btn");
+      const btnText = document.getElementById("btn-text");
+      const spinner = document.getElementById("btn-spinner");
+
+      btn.disabled = true;
+      btnText.textContent = `Analyzing (${researchMode.toUpperCase()})...`;
+      spinner.style.display = "block";
+
+      document.querySelector('[data-tab="tab-report"]').click();
+
+      try {
+        const res = await fetch("/api/v1/research-runs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            asset_id: assetId,
+            research_mode: researchMode,
+            risk_budget_rupees: riskBudget,
+            include_risk_agent: includeRisk,
+            risk_veto_threshold: riskThreshold
+          })
+        });
+        const data = await res.json();
+        currentRunId = data.run_id;
+
+        if (pollInterval) clearInterval(pollInterval);
+        pollInterval = setInterval(checkRunStatus, 1500);
+      } catch (err) {
+        alert("Failed to start run: " + err.message);
+        btn.disabled = false;
+        btnText.textContent = "Execute Multi-Agent Research";
+        spinner.style.display = "none";
+      }
+    });
+
+    async function checkRunStatus() {
+      if (!currentRunId) return;
+      try {
+        const res = await fetch(`/api/v1/research-runs/${currentRunId}`);
+        const run = await res.json();
+
+        if (run.status === "COMPLETED" || run.status === "INSUFFICIENT_EVIDENCE") {
+          clearInterval(pollInterval);
+          document.getElementById("run-btn").disabled = false;
+          document.getElementById("btn-text").textContent = "Execute Multi-Agent Research";
+          document.getElementById("btn-spinner").style.display = "none";
+          loadRunResults(currentRunId);
+        } else if (run.status.includes("FAILED")) {
+          clearInterval(pollInterval);
+          document.getElementById("run-btn").disabled = false;
+          document.getElementById("btn-text").textContent = "Execute Multi-Agent Research";
+          document.getElementById("btn-spinner").style.display = "none";
+          alert("Run failed with state: " + run.status);
+          loadRunResults(currentRunId);
+        }
+      } catch (e) {
+        console.error("Polling error:", e);
+      }
+    }
+
+    async function loadRunResults(runId) {
+      try {
+        const repRes = await fetch(`/api/v1/research-runs/${runId}/report`);
+        if (repRes.ok) {
+          const report = await repRes.json();
+          renderReport(report);
+          renderSignalCardTab(report.signal_card);
+          renderExpertReviews(report.expert_reviews);
+        }
+
+        const traceRes = await fetch(`/api/v1/research-runs/${runId}/trace`);
+        if (traceRes.ok) {
+          const traceData = await traceRes.json();
+          renderTrace(traceData);
+        }
+
+        const evRes = await fetch(`/api/v1/research-runs/${runId}/evidence`);
+        if (evRes.ok) {
+          const evData = await evRes.json();
+          renderEvidence(evData);
+        }
+
+        await loadSignalLedger();
+      } catch (err) {
+        console.error("Failed to load results:", err);
+      }
+    }
+
+    function renderReport(report) {
+      document.getElementById("report-empty").style.display = "none";
+      const content = document.getElementById("report-content");
+      content.style.display = "flex";
+
+      document.getElementById("report-asset-name").textContent = `${report.asset.name} (${report.asset.symbol})`;
+      document.getElementById("report-run-id").textContent = report.run_id;
+      document.getElementById("report-mode-tag").textContent = (report.research_mode || "SWING").toUpperCase();
+
+      const badge = document.getElementById("report-rec-badge");
+      badge.textContent = report.recommendation;
+      badge.className = `rec-badge rec-${report.recommendation}`;
+
+      // Risk veto banner
+      const vetoBanner = document.getElementById("report-veto-banner");
+      if (report.risk_veto && report.risk_veto.triggered) {
+        vetoBanner.style.display = "block";
+        document.getElementById("report-veto-reason").textContent = report.risk_veto.reason || "Veto enforced to protect capital.";
+      } else {
+        vetoBanner.style.display = "none";
+      }
+
+      // Quick Signal Box
+      const sig = report.signal_card;
+      if (sig) {
+        document.getElementById("signal-setup-title").textContent = sig.setup_name;
+        document.getElementById("signal-actionability-reason").textContent = sig.actionability_reason;
+
+        const actionBadge = document.getElementById("signal-actionable-badge");
+        if (sig.is_actionable) {
+          actionBadge.className = "badge healthy";
+          actionBadge.textContent = "● ACTIONABLE SETUP";
+        } else {
+          actionBadge.className = "badge warning";
+          actionBadge.textContent = "● CAPITAL PRESERVATION / NO TRADE";
+        }
+
+        document.getElementById("sig-ref-price").textContent = sig.current_reference_price > 0 ? `₹${sig.current_reference_price}` : "N/A";
+        document.getElementById("sig-entry-trigger").textContent = sig.entry_trigger ? `₹${sig.entry_trigger}` : "N/A";
+        document.getElementById("sig-stop-loss").textContent = sig.stop_loss ? `₹${sig.stop_loss}` : "N/A";
+        document.getElementById("sig-target-1").textContent = sig.target_1 ? `₹${sig.target_1}` : "N/A";
+        document.getElementById("sig-rr").textContent = sig.reward_to_risk ? `${sig.reward_to_risk}x` : "N/A";
+        document.getElementById("sig-qty").textContent = sig.suggested_quantity > 0 ? `${sig.suggested_quantity} shs` : "0";
+      }
+
+      // Technical engine summary
+      const tech = report.technical_context;
+      if (tech) {
+        document.getElementById("tech-trend").textContent = tech.trend;
+        document.getElementById("tech-rsi").textContent = tech.indicators.rsi_14;
+        document.getElementById("tech-atr").textContent = `₹${tech.indicators.atr_14}`;
+        document.getElementById("tech-ema21").textContent = `₹${tech.indicators.ema_21}`;
+        document.getElementById("tech-ema50").textContent = `₹${tech.indicators.ema_50}`;
+        document.getElementById("tech-rs").textContent = `${tech.indicators.relative_strength_vs_nifty > 0 ? '+' : ''}${tech.indicators.relative_strength_vs_nifty}%`;
+      }
+
+      // Derivatives summary
+      const deriv = report.derivatives_context;
+      if (deriv && deriv.is_fo_eligible) {
+        document.getElementById("deriv-buildup").textContent = `${deriv.buildup.type} (${deriv.buildup.sentiment})`;
+        document.getElementById("deriv-fut-px").textContent = `₹${deriv.futures_price}`;
+        document.getElementById("deriv-basis").textContent = `${deriv.basis > 0 ? '+' : ''}₹${deriv.basis}`;
+        document.getElementById("deriv-pcr").textContent = `${deriv.options_context.put_call_ratio} (${deriv.options_context.pcr_bias})`;
+        document.getElementById("deriv-call-wall").textContent = `₹${deriv.options_context.call_wall_strike}`;
+        document.getElementById("deriv-put-wall").textContent = `₹${deriv.options_context.put_wall_strike}`;
+      } else {
+        document.getElementById("deriv-buildup").textContent = "Non-F&O Equity";
+        document.getElementById("deriv-fut-px").textContent = "N/A";
+        document.getElementById("deriv-basis").textContent = "N/A";
+        document.getElementById("deriv-pcr").textContent = "N/A";
+        document.getElementById("deriv-call-wall").textContent = "N/A";
+        document.getElementById("deriv-put-wall").textContent = "N/A";
+      }
+
+      // Strongest arguments
+      document.getElementById("strongest-bull-text").textContent = report.strongest_bull_argument.claim;
+      const bullEids = document.getElementById("strongest-bull-evidence");
+      bullEids.innerHTML = "";
+      (report.strongest_bull_argument.evidence_ids || []).forEach(eid => {
+        bullEids.innerHTML += `<span class="tag-evidence">${eid}</span>`;
+      });
+
+      document.getElementById("strongest-bear-text").textContent = report.strongest_bear_argument.claim;
+      const bearEids = document.getElementById("strongest-bear-evidence");
+      bearEids.innerHTML = "";
+      (report.strongest_bear_argument.evidence_ids || []).forEach(eid => {
+        bearEids.innerHTML += `<span class="tag-evidence">${eid}</span>`;
+      });
+
+      // Deciding reasons
+      const reasonsList = document.getElementById("deciding-reasons-list");
+      reasonsList.innerHTML = "";
+      report.deciding_reasons.forEach(r => {
+        const div = document.createElement("div");
+        div.style.padding = "0.6rem";
+        div.style.background = "var(--bg-card)";
+        div.style.borderRadius = "6px";
+        let tags = "";
+        (r.evidence_ids || []).forEach(e => tags += `<span class="tag-evidence">${e}</span>`);
+        div.innerHTML = `<div>${r.reason} ${tags}</div>`;
+        reasonsList.appendChild(div);
+      });
+
+      // Valuation box
+      const valBox = document.getElementById("val-context-box");
+      const val = report.valuation_context;
+      if (val && val.status === "VERIFIED_FIXTURE") {
+        valBox.innerHTML = `
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-bottom: 0.5rem;">
+            <div>Trailing P/E: <strong>${val.trailing_pe}x</strong> (Sector: ${val.sector_avg_pe}x)</div>
+            <div>EV/EBITDA: <strong>${val.ev_to_ebitda}x</strong> (Sector: ${val.sector_avg_ev_ebitda}x)</div>
+            <div>ROCE: <strong>${val.roce_pct}%</strong> • ROE: <strong>${val.roe_pct}%</strong></div>
+            <div>Debt / Equity: <strong>${val.debt_to_equity}x</strong> • CFO/EBITDA: <strong>${val.cfo_to_ebitda}x</strong></div>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">
+            <strong>Metric Suitability:</strong> ${val.metric_suitability_rationale}
+          </div>
+        `;
+      } else {
+        valBox.innerHTML = `<span style="color: var(--text-muted);">${(val && val.message) || 'Valuation context pending verified annual report filings.'}</span>`;
+      }
+
+      // Uncertainties
+      const uncertList = document.getElementById("uncertainties-list");
+      uncertList.innerHTML = "";
+      (report.uncertainties || []).forEach(u => {
+        const li = document.createElement("li");
+        li.textContent = u;
+        uncertList.appendChild(li);
+      });
+
+      // Rebuttals
+      document.getElementById("rebuttal-bull-text").textContent = report.bull_rebuttal.text;
+      const rBullEids = document.getElementById("rebuttal-bull-eids");
+      rBullEids.innerHTML = "";
+      (report.bull_rebuttal.evidence_ids || []).forEach(e => rBullEids.innerHTML += `<span class="tag-evidence">${e}</span>`);
+
+      document.getElementById("rebuttal-bear-text").textContent = report.bear_rebuttal.text;
+      const rBearEids = document.getElementById("rebuttal-bear-eids");
+      rBearEids.innerHTML = "";
+      (report.bear_rebuttal.evidence_ids || []).forEach(e => rBearEids.innerHTML += `<span class="tag-evidence">${e}</span>`);
+    }
+
+    function renderSignalCardTab(sig) {
+      if (!sig) return;
+      document.getElementById("signal-card-mode-badge").textContent = `Mode: ${sig.research_mode.toUpperCase()}`;
+      document.getElementById("card-actionable-status").textContent = sig.is_actionable ? "ACTIONABLE SETUP" : "NON-ACTIONABLE / PRESERVE CAPITAL";
+      document.getElementById("card-actionable-status").style.color = sig.is_actionable ? "#34d399" : "#fbbf24";
+      document.getElementById("card-decision").textContent = `${sig.decision} (${sig.confidence_label})`;
+
+      document.getElementById("card-instrument").textContent = `${sig.instrument} (${sig.symbol}) • Exchange: ${sig.exchange}`;
+      document.getElementById("card-ref-price").textContent = sig.current_reference_price > 0 ? `₹${sig.current_reference_price}` : "N/A";
+      document.getElementById("card-entry-details").textContent = sig.entry_trigger ? `Trigger: ₹${sig.entry_trigger} | Zone: ₹${sig.entry_zone_min} – ₹${sig.entry_zone_max}` : "N/A";
+      document.getElementById("card-stop-details").textContent = sig.stop_loss ? `₹${sig.stop_loss} (${sig.stop_loss_type}) | Risk per share: ₹${sig.risk_per_share}` : "N/A";
+      document.getElementById("card-invalidation-reason").textContent = sig.invalidation_reason;
+      document.getElementById("card-target-details").textContent = sig.target_1 ? `T1: ₹${sig.target_1} | T2: ₹${sig.target_2} | R:R: ${sig.reward_to_risk}x` : "N/A";
+      document.getElementById("card-quantity-details").textContent = sig.suggested_quantity > 0 ? `${sig.suggested_quantity} shares (Allocated from ₹${sig.risk_budget_rupees} Risk Capital)` : "0 shares";
+      document.getElementById("card-holding-window").textContent = `${sig.holding_window}`;
+      document.getElementById("card-slippage-caveats").textContent = `${sig.liquidity_impact_caveat} (Modeled Slippage: ${sig.slippage_assumption_pct}%)`;
+      document.getElementById("card-no-trade-conditions").textContent = sig.no_trade_conditions.join(" • ") || "None";
+    }
+
+    function renderExpertReviews(reviews) {
+      const container = document.getElementById("persona-reviews-container");
+      container.innerHTML = "";
+
+      if (!reviews || reviews.length === 0) {
+        container.innerHTML = `<div style="color: var(--text-muted); font-size: 0.85rem;">No expert reviews recorded for this run.</div>`;
+        return;
+      }
+
+      reviews.forEach(r => {
+        const div = document.createElement("div");
+        div.className = "persona-card";
+        let checklistHtml = "";
+        (r.checklist_items || []).forEach(item => {
+          const isDone = item.status === "VERIFIED";
+          checklistHtml += `<li style="font-size: 0.78rem; color: ${isDone ? '#34d399' : '#fbbf24'};">${item.item} [${item.status}]</li>`;
+        });
+
+        div.innerHTML = `
+          <div class="persona-header">
+            <div>
+              <span class="persona-title">${r.persona_name}</span>
+              <div class="persona-lens">${r.lens_title}</div>
+            </div>
+            <span class="badge ${r.priority === 'P0' ? 'danger' : (r.priority === 'P1' ? 'warning' : 'healthy')}">${r.priority}</span>
+          </div>
+          <div style="font-size: 0.83rem; color: #e5e7eb; margin-bottom: 0.4rem;">
+            <strong>Observed Gap:</strong> ${r.observed_issue}
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+            <strong>Recommendation:</strong> ${r.suggested_change}
+          </div>
+          <ul style="padding-left: 1.25rem; margin-top: 4px;">
+            ${checklistHtml}
+          </ul>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    async function loadSignalLedger() {
+      try {
+        const res = await fetch("/api/v1/signals");
+        if (res.ok) {
+          const signals = await res.json();
+          const tbody = document.getElementById("signal-ledger-tbody");
+          tbody.innerHTML = "";
+
+          if (signals.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--text-muted);">No signals recorded in ledger yet.</td></tr>`;
+            return;
+          }
+
+          signals.forEach(s => {
+            const tr = document.createElement("tr");
+            const isTrig = s.status === "triggered";
+            tr.innerHTML = `
+              <td style="font-size: 0.75rem; color: var(--text-muted);">${s.created_at.slice(0, 19).replace('T', ' ')}</td>
+              <td><strong>${s.symbol}</strong></td>
+              <td><span class="badge">${s.mode}</span></td>
+              <td><span class="rec-badge rec-${s.decision}" style="font-size: 0.8rem; padding: 2px 8px;">${s.decision}</span></td>
+              <td>${s.entry_price ? '₹' + s.entry_price : 'N/A'}</td>
+              <td style="color: #f87171;">${s.stop_loss ? '₹' + s.stop_loss : 'N/A'}</td>
+              <td style="color: #34d399;">${s.target_1 ? '₹' + s.target_1 : 'N/A'}</td>
+              <td>${s.risk_reward ? s.risk_reward + 'x' : 'N/A'}</td>
+              <td><span class="badge ${isTrig ? 'healthy' : 'warning'}">${s.status}</span></td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+      } catch (err) {
+        console.error("Failed to load signals:", err);
+      }
+    }
+
+    document.getElementById("btn-refresh-signals").addEventListener("click", loadSignalLedger);
+
+    function renderTrace(traceData) {
+      document.getElementById("trace-count-badge").textContent = `${traceData.event_count} Events`;
+      document.getElementById("chain-status").textContent = `Chain Verified: ${traceData.hash_chain_valid}`;
+      document.getElementById("chain-status").className = `badge ${traceData.hash_chain_valid ? 'healthy' : ''}`;
+
+      const list = document.getElementById("trace-list");
+      list.innerHTML = "";
+      traceData.trace.forEach(ev => {
+        const div = document.createElement("div");
+        div.className = "trace-item";
+        div.innerHTML = `
+          <div class="trace-seq">#${ev.sequence_no}</div>
+          <div class="trace-actor">${ev.agent_or_tool}</div>
+          <div class="trace-type">[${ev.event_type}]</div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function renderEvidence(evData) {
+      document.getElementById("evidence-count-badge").textContent = `${evData.count} Items`;
+      const tbody = document.getElementById("evidence-table-body");
+      tbody.innerHTML = "";
+
+      if (!evData.evidence || evData.evidence.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No evidence records generated for this run.</td></tr>`;
+        return;
+      }
+
+      evData.evidence.forEach(item => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><span class="tag-evidence">${item.evidence_code}</span></td>
+          <td><span class="badge">${item.evidence_type}</span></td>
+          <td style="color: #e5e7eb;">${item.passage_text}</td>
+          <td style="color: var(--text-muted); font-size: 0.78rem;">${item.document_name} (p. ${item.page_number || 1})</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function loadCoverageDashboard() {
+      try {
+        const res = await fetch("/api/v1/coverage");
+        if (!res.ok) return;
+        const data = await res.json();
+        const records = data.readiness_records || [];
+
+        // Update metrics
+        document.getElementById("cov-metric-total").textContent = `${records.length} Stocks`;
+        const readyCount = records.filter(r => r.overall_readiness === "READY_FOR_RESEARCH").length;
+        document.getElementById("cov-metric-ready").textContent = `${readyCount} Ready`;
+        const totalBars = records.reduce((acc, r) => acc + (r.market_data_bars || 0), 0);
+        document.getElementById("cov-metric-bars").textContent = `${totalBars.toLocaleString()} Bars`;
+
+        const tbody = document.getElementById("coverage-table-body");
+        tbody.innerHTML = "";
+
+        records.forEach(r => {
+          const tr = document.createElement("tr");
+          let badgeClass = "badge";
+          if (r.overall_readiness === "READY_FOR_RESEARCH") badgeClass = "badge healthy";
+          else if (r.overall_readiness === "PARTIALLY_READY") badgeClass = "badge real";
+          else if (r.overall_readiness === "DOCUMENTS_PENDING") badgeClass = "badge warning";
+          else badgeClass = "badge danger";
+
+          const marketInfo = r.market_data_bars > 0 
+            ? `${r.market_data_bars} daily bars (${r.market_data_start_date ? r.market_data_start_date.slice(0, 4) : ''}–${r.market_data_end_date ? r.market_data_end_date.slice(0, 4) : ''})`
+            : "0 bars (No price history)";
+
+          tr.innerHTML = `
+            <td><strong>${r.symbol}</strong></td>
+            <td>${r.name}</td>
+            <td><strong style="color: #60a5fa;">${r.available_docs_count}</strong> / ${r.total_required_categories}</td>
+            <td style="color: var(--text-muted); font-size: 0.78rem;">${r.pending_docs_count} pending (official IR link retained)</td>
+            <td style="font-size: 0.78rem;">${marketInfo}</td>
+            <td><span style="color: #34d399; font-weight: 600;">${r.fundamental_coverage_pct}%</span></td>
+            <td><span style="color: #c084fc; font-weight: 600;">${r.technical_coverage_pct}%</span></td>
+            <td><span class="${badgeClass}">${r.overall_readiness}</span></td>
+            <td>
+              <button class="btn-secondary" style="font-size: 0.75rem; padding: 3px 8px;" onclick="openCoverageModal('${r.asset_id}')">
+                Inspect 12 Docs
+              </button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        console.error("Failed to load coverage dashboard:", err);
+      }
+    }
+
+    async function openCoverageModal(assetId) {
+      try {
+        const res = await fetch(`/api/v1/coverage/${assetId}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        const asset = data.asset || {};
+        const items = data.catalog_items || [];
+        const readiness = data.readiness || {};
+
+        document.getElementById("modal-coverage-title").textContent = `${asset.name} (${asset.symbol}) — Standard 12-Category Package`;
+        document.getElementById("modal-coverage-subtitle").textContent = 
+          `Readiness: ${readiness.overall_readiness || 'N/A'} • ${readiness.available_docs_count || 0}/12 Categories Available • ${readiness.market_data_bars || 0} Historical OHLCV Bars (${readiness.market_data_start_date || ''} to ${readiness.market_data_end_date || ''})`;
+
+        const tbody = document.getElementById("modal-coverage-table-body");
+        tbody.innerHTML = "";
+
+        items.forEach((item, idx) => {
+          const tr = document.createElement("tr");
+          let statusBadge = "badge";
+          if (item.status === "available") statusBadge = "badge healthy";
+          else if (item.status === "pending") statusBadge = "badge warning";
+          else if (item.status === "missing") statusBadge = "badge danger";
+          else statusBadge = "badge";
+
+          const extBadge = item.extraction_status === "success" 
+            ? `<span class="badge healthy">Extracted to RAG</span>`
+            : `<span class="badge warning">${item.extraction_status}</span>`;
+
+          const sourceLink = item.source_url 
+            ? `<a href="${item.source_url}" target="_blank" style="color: #60a5fa; text-decoration: underline;">${item.source_name} ↗</a>`
+            : item.source_name;
+
+          tr.innerHTML = `
+            <td style="color: var(--text-muted); font-weight: bold;">${idx + 1}</td>
+            <td><strong>${item.category_name}</strong><br/><small style="color: var(--text-muted);">${item.title}</small></td>
+            <td>${item.period}</td>
+            <td><span class="${statusBadge}">${item.status.toUpperCase()}</span></td>
+            <td>${extBadge}</td>
+            <td style="font-size: 0.75rem;">${sourceLink}<br/><span style="color: var(--text-muted);">${item.notes || ''}</span></td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        document.getElementById("coverage-detail-modal").style.display = "flex";
+      } catch (err) {
+        console.error("Failed to load coverage detail:", err);
+      }
+    }
+
+    function closeCoverageModal() {
+      document.getElementById("coverage-detail-modal").style.display = "none";
+    }
+
+    async function refreshCoverageAudit() {
+      const btn = document.getElementById("btn-refresh-coverage");
+      btn.textContent = "Auditing...";
+      btn.disabled = true;
+      try {
+        await fetch("/api/v1/coverage/refresh", { method: "POST" });
+        setTimeout(async () => {
+          await loadCoverageDashboard();
+          btn.textContent = "⚡ Re-Audit Coverage";
+          btn.disabled = false;
+        }, 1200);
+      } catch (err) {
+        btn.textContent = "⚡ Re-Audit Coverage";
+        btn.disabled = false;
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
